@@ -14,11 +14,16 @@ class WeatherService {
         this.getMyWeather()
     }
 
+    getWeatherDetails() {
+
+    }
+
     getMyWeather() {
         _weatherApi.get('?city=Boise,ID&key=090bc7417a164650bb928a695962702a')
             .then(res => {
                 console.log(res.data)
-            })
+                store.commit('MyWeather', res.data)
+            }).catch(err => console.error(err))
     }
 }
 
